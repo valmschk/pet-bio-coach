@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package coach.v1;
+
+option java_multiple_files = true;
+option java_package = "com.bioengine.coach.grpc";
+
+service CoachService {
+  rpc GetDailyRecommendation (RecommendationRequest) returns (RecommendationResponse);
+}
+
+message RecommendationRequest {
+  string user_id = 1;
+  int32 stress_level = 2;  // ожидается диапазон [0..10]
+}
+
+message RecommendationResponse {
+  string user_id = 1;
+  string recommendation = 2;
+  bool from_cache = 3;
+  int64 generation_time_ms = 4;
+}

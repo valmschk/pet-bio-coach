@@ -1,0 +1,15 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  application:
+    name: api-gateway
+
+grpc:
+  client:
+    coach-service:
+      address: static://localhost:9090
+      negotiationType: plaintext   
+      defaultDeadline: 8s
+      max-inbound-message-size: 4194304
